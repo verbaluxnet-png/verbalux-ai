@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verbalux AI | 24/7 AI VIP Voice Concierge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0052FF;
+            --secondary: #0A192F;
+            --accent: #00D2FF;
+            --bg-light: #F4F7FB;
+            --white: #FFFFFF;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--secondary);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background: #003ECC;
+            box-shadow: 0 8px 20px rgba(0, 82, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 8%;
+            text-align: center;
+            background: linear-gradient(180deg, #FFFFFF 0%, #EBF2FF 100%);
+        }
+
+        .badge {
+            background: #E0EAFF;
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 20px 0;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        /* Problem & Solution Section */
+        .section {
+            padding: 60px 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* Floating Voice Widget */
+        .voice-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 16px 24px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0, 82, 255, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            z-index: 1000;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <nav>
+        <div class="logo">Verbalux <span>AI</span></div>
+        <a href="#demo" class="btn-primary">Try Live Demo ↗</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <span class="badge">The Future Is Here</span>
+        <h1>The Future of <span>Luxury Guest Experience</span> is Here</h1>
+        <p>A 24/7 AI VIP Voice Concierge designed specifically for luxury brands, premium resorts, and high-value accounts.</p>
+        <a href="#demo" class="btn-primary" style="font-size: 18px; padding: 16px 36px;">🎙️ Test Voice Concierge Demo</a>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <h2 style="text-align: center; font-size: 32px; color: var(--secondary);">Why Verbalux AI?</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🗣️ Human-like Conversations</h3>
+                <p>Seamless, natural voice interactions tailored for the most demanding VIP clientele.</p>
+            </div>
+            <div class="card">
+                <h3>📅 Smart Bookings</h3>
+                <p>Handles reservations, guest requests, and inquiries instantly 24/7 without delay.</p>
+            </div>
+            <div class="card">
+                <h3>🏨 Built for Luxury</h3>
+                <p>Specifically engineered for Luxury Hotels, Resorts, Brands, and High-End Enterprises.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voice Widget Floating Button -->
+    <div class="voice-widget" onclick="alert('Starting Verbalux AI Voice Demo...')">
+        <span>🎙️</span>
+        <span>Talk to AI VIP Assistant</span>
+    </div>
+
+</body>
+</html>
