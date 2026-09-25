@@ -83,14 +83,14 @@
     <!-- Vapi Integration Script -->
     <script src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"></script>
     <script>
-      const apiKey = "YOUR_PUBLIC_KEY"; // ضع هنا Public Key من Vapi
-      const assistantId = "YOUR_ASSISTANT_ID"; // ضع هنا Assistant ID من Vapi
+      const apiKey = "YOUR_PUBLIC_KEY"; // ضع مفتاح Vapi هنا
+      const assistantId = "YOUR_ASSISTANT_ID"; // ضع معرف المساعد هنا
 
       document.getElementById('start-voice-btn').addEventListener('click', () => {
         if (window.vapiSDK && apiKey !== "YOUR_PUBLIC_KEY") {
           window.vapiSDK.run({ apiKey: apiKey, assistant: assistantId });
         } else {
-          alert('اضغط هنا لبدء المحادثة الصوتي المباشرة عبر البوت!');
+          alert('اضغط هنا لبدء المحادثة الصوتية المباشرة عبر البوت!');
         }
       });
     </script>
