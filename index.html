@@ -4,93 +4,262 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verbalux AI | VIP Voice Concierge</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #0052FF;
+            --primary-hover: #0043CC;
             --secondary: #0A192F;
-            --bg-light: #F4F7FB;
+            --bg-light: #F8FAFC;
             --white: #FFFFFF;
-            --text-dark: #1E293B;
+            --text-dark: #0F172A;
             --text-muted: #64748B;
+            --border-color: #E2E8F0;
+            --accent-green: #10B981;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
         nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 8%; background: var(--white); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
         }
 
-        .logo { font-size: 24px; font-weight: 800; color: var(--secondary); }
-        .logo span { color: var(--primary); }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--secondary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ECFDF5;
+            color: #065F46;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
 
         .hero {
-            padding: 80px 8%; text-align: center;
-            background: linear-gradient(180deg, #FFFFFF 0%, #EBF2FF 100%);
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .badge {
-            background: #EDE9FF; color: var(--primary); padding: 6px 16px;
-            border-radius: 20px; font-size: 14px; font-weight: 700; display: inline-block; margin-bottom: 20px;
+        .hero-badge {
+            background: #EDE9FF;
+            color: var(--primary);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
-        .hero h1 { font-size: 42px; font-weight: 800; color: var(--secondary); margin-bottom: 15px; }
-        .hero h1 span { color: var(--primary); }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
 
         .hero p {
-            font-size: 18px; color: var(--text-muted); max-width: 600px; margin: 0 auto 30px auto;
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            font-weight: 500;
         }
 
-        .action-card {
-            max-width: 450px; margin: 0 auto; background: var(--white);
-            padding: 40px 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        .card-container {
+            max-width: 460px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
         }
 
         .btn-voice {
-            width: 100%; background: var(--primary); color: var(--white);
-            padding: 18px; border: none; border-radius: 30px; font-size: 18px;
-            font-weight: 700; cursor: pointer; transition: 0.3s;
-            box-shadow: 0 8px 20px rgba(0, 82, 255, 0.3);
+            width: 100%;
+            background: var(--primary);
+            color: var(--white);
+            padding: 18px 28px;
+            border: none;
+            border-radius: 16px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 10px 20px -5px rgba(0, 82, 255, 0.3);
         }
 
-        .btn-voice:hover { background: #003ECC; transform: translateY(-2px); }
+        .btn-voice:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -5px rgba(0, 82, 255, 0.4);
+        }
 
-        footer { text-align: center; padding: 25px; background: var(--secondary); color: var(--white); font-size: 14px; margin-top: 60px; }
+        .btn-voice:active {
+            transform: translateY(0);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 60px auto 0 auto;
+            text-align: left;
+        }
+
+        .feature-item {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-item h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .feature-item p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--white);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 34px; }
+            .hero p { font-size: 16px; }
+            .card-container { padding: 28px 20px; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">Verbalux <span>AI</span></div>
+        <div class="status-badge">
+            <span class="status-dot"></span> Online & Ready
+        </div>
     </nav>
 
-    <section class="hero">
-        <span class="badge">24/7 AI VIP Voice Concierge</span>
-        <h1>Welcome to <span>Verbalux AI</span></h1>
-        <p>Talk directly with our VIP Voice Assistant in any language instantly.</p>
+    <main class="hero">
+        <span class="hero-badge">Next-Gen VIP Concierge</span>
+        <h1>Experience True <span>AI Voice Assistance</span></h1>
+        <p>Instant hands-free interaction with zero registration or setup needed.</p>
 
-        <div class="action-card">
-            <button class="btn-voice" id="start-voice-btn">🎙️ Start Voice Conversation</button>
+        <div class="card-container">
+            <button class="btn-voice" id="start-voice-btn">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                <span>Start Voice Assistant</span>
+            </button>
         </div>
-    </section>
+
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3>⚡ Zero Friction</h3>
+                <p>One click connection without forms or sign-ups.</p>
+            </div>
+            <div class="feature-item">
+                <h3>🌍 Multilingual</h3>
+                <p>Communicates effortlessly in multiple languages.</p>
+            </div>
+            <div class="feature-item">
+                <h3>🔒 Privacy Focused</h3>
+                <p>Safe and direct voice communication channel.</p>
+            </div>
+        </div>
+    </main>
 
     <footer>
         &copy; 2026 Verbalux AI. All rights reserved.
     </footer>
 
-    <!-- Vapi Integration Script -->
+    <!-- Vapi Web Integration -->
     <script src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"></script>
     <script>
-      const apiKey = "YOUR_PUBLIC_KEY"; // ضع مفتاح Vapi هنا
-      const assistantId = "YOUR_ASSISTANT_ID"; // ضع معرف المساعد هنا
+      const apiKey = "YOUR_PUBLIC_KEY"; // ضع هنا Public Key من Vapi
+      const assistantId = "YOUR_ASSISTANT_ID"; // ضع هنا Assistant ID من Vapi
 
       document.getElementById('start-voice-btn').addEventListener('click', () => {
         if (window.vapiSDK && apiKey !== "YOUR_PUBLIC_KEY") {
-          window.vapiSDK.run({ apiKey: apiKey, assistant: assistantId });
+          window.vapiSDK.run({
+            apiKey: apiKey,
+            assistant: assistantId
+          });
         } else {
-          alert('اضغط هنا لبدء المحادثة الصوتية المباشرة عبر البوت!');
+          alert('يرجى وضع المفاتيح الخاصة بك (Public Key و Assistant ID) في الكود لتفعيل الصوت المباشر.');
         }
       });
     </script>
