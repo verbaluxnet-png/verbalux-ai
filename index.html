@@ -3,197 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verbalux AI | 24/7 AI VIP Voice Concierge</title>
+    <title>Verbalux AI | VIP Voice Concierge</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #0052FF;
             --secondary: #0A192F;
-            --accent: #00D2FF;
             --bg-light: #F4F7FB;
             --white: #FFFFFF;
             --text-dark: #1E293B;
             --text-muted: #64748B;
+            --border-color: #E2E8F0;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
 
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            background: var(--white);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 8%; background: var(--white); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--secondary);
-        }
-
-        .logo span {
-            color: var(--primary);
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: var(--white);
-            padding: 12px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-primary:hover {
-            background: #003ECC;
-            box-shadow: 0 8px 20px rgba(0, 82, 255, 0.3);
-        }
+        .logo { font-size: 24px; font-weight: 800; color: var(--secondary); }
+        .logo span { color: var(--primary); }
 
         .hero {
-            padding: 80px 8%;
-            text-align: center;
+            padding: 50px 8%; text-align: center;
             background: linear-gradient(180deg, #FFFFFF 0%, #EBF2FF 100%);
         }
 
         .badge {
-            background: #EDE9FF;
-            color: var(--primary);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+            background: #EDE9FF; color: var(--primary); padding: 6px 16px;
+            border-radius: 20px; font-size: 14px; font-weight: 700; display: inline-block; margin-bottom: 15px;
         }
 
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 800;
-            color: var(--secondary);
-            margin-bottom: 20px;
-            line-height: 1.2;
+        .hero h1 { font-size: 38px; font-weight: 800; color: var(--secondary); margin-bottom: 10px; }
+        .hero h1 span { color: var(--primary); }
+
+        /* Payment Form Box */
+        .payment-card {
+            max-width: 450px; margin: 25px auto; background: var(--white);
+            padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color); text-align: left;
         }
 
-        .hero h1 span {
-            color: var(--primary);
+        .payment-card h3 { font-size: 20px; color: var(--secondary); margin-bottom: 5px; text-align: center; }
+        .payment-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; text-align: center; }
+
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--secondary); }
+        .form-group input {
+            width: 100%; padding: 12px 14px; border: 1px solid var(--border-color);
+            border-radius: 10px; font-size: 15px; outline: none; background: #F8FAFC;
+        }
+        .form-group input:focus { border-color: var(--primary); background: var(--white); }
+
+        .form-row { display: flex; gap: 12px; }
+
+        .btn-submit {
+            width: 100%; background: var(--primary); color: var(--white);
+            padding: 15px; border: none; border-radius: 30px; font-size: 16px;
+            font-weight: 700; cursor: pointer; transition: 0.3s; margin-top: 10px;
         }
 
-        .hero p {
-            font-size: 18px;
-            color: var(--text-muted);
-            max-width: 650px;
-            margin: 0 auto 40px auto;
-        }
+        .btn-submit:hover { background: #003ECC; }
 
-        .cta-group {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+        /* Voice Bot Section */
+        .voice-section { display: none; margin-top: 20px; text-align: center; }
+        .btn-voice {
+            background: #10B981; color: var(--white); padding: 16px 32px;
+            border-radius: 30px; font-size: 18px; font-weight: 700; border: none;
+            cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
         }
+        .btn-voice:hover { background: #059669; }
 
-        .btn-call {
-            background: var(--primary);
-            color: var(--white);
-            padding: 16px 32px;
-            border-radius: 30px;
-            font-size: 18px;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: 0 10px 25px rgba(0, 82, 255, 0.3);
-            transition: 0.3s;
-        }
-
-        .btn-call:hover {
-            transform: translateY(-2px);
-        }
-
-        .features {
-            padding: 80px 8%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            border: 1px solid #E2E8F0;
-        }
-
-        .card h3 {
-            font-size: 20px;
-            color: var(--secondary);
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 15px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: var(--secondary);
-            color: var(--white);
-            font-size: 14px;
-        }
+        footer { text-align: center; padding: 25px; background: var(--secondary); color: var(--white); font-size: 14px; margin-top: 40px; }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">Verbalux <span>AI</span></div>
-        <a href="tel:+212709400018" class="btn-primary">Try Live Demo ↗</a>
     </nav>
 
     <section class="hero">
-        <span class="badge">The Future is Here</span>
-        <h1>The Future of<br><span>Luxury Guest Experience</span> is Here</h1>
-        <p>A 24/7 AI VIP Voice Concierge designed specifically for luxury brands, premium resorts, and high-value accounts.</p>
-        
-        <div class="cta-group">
-            <a href="tel:+212709400018" class="btn-call">🎙️ Test Voice Concierge Demo</a>
-            <a href="tel:+212709400018" class="btn-call" style="background: var(--secondary);">🎙️ Talk to AI VIP Assistant</a>
-        </div>
-    </section>
+        <span class="badge">24/7 AI VIP Voice Concierge</span>
+        <h1>Payment & <span>Voice Activation</span></h1>
 
-    <section class="features">
-        <div class="card">
-            <h3>⚡ Instant Response</h3>
-            <p>Zero wait time for VIP guests. Handles incoming phone calls naturally in multi-languages.</p>
+        <!-- Form for Entering Payment Info -->
+        <div class="payment-card" id="form-box">
+            <h3>💳 Enter Payment Details</h3>
+            <p>Fill in your banking information to proceed</p>
+
+            <form id="card-form">
+                <div class="form-group">
+                    <label>Cardholder Name</label>
+                    <input type="text" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Card Number</label>
+                    <input type="text" placeholder="4532 •••• •••• 8899" maxlength="19" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Expiry Date</label>
+                        <input type="text" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>CVV / CVC</label>
+                        <input type="password" placeholder="123" maxlength="4" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">🔒 Save & Activate Voice Assistant</button>
+            </form>
         </div>
-        <div class="card">
-            <h3>🏨 Hospitality Trained</h3>
-            <p>Pre-configured for hotel bookings, room service requests, concierge advice, and VIP service handling.</p>
-        </div>
-        <div class="card">
-            <h3>🔒 Enterprise Security</h3>
-            <p>Built with enterprise-grade data protection standards for high-profile client privacy.</p>
+
+        <!-- Voice Call Button (Appears after submitting form) -->
+        <div class="voice-section" id="voice-box">
+            <h3 style="color: #10B981; margin-bottom: 10px;">✅ Card Saved Successfully!</h3>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">You can now talk directly to the AI Voice Concierge.</p>
+            <button class="btn-voice" id="start-voice-btn">🎙️ Start Voice Conversation</button>
         </div>
     </section>
 
@@ -201,5 +133,33 @@
         &copy; 2026 Verbalux AI. All rights reserved.
     </footer>
 
+    <!-- Vapi Integration Script -->
+    <script src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"></script>
+    <script>
+      const apiKey = "YOUR_PUBLIC_KEY"; // مفتاح Vapi
+      const assistantId = "YOUR_ASSISTANT_ID"; // معرف البوت
+
+      const formBox = document.getElementById('form-box');
+      const voiceBox = document.getElementById('voice-box');
+      const cardForm = document.getElementById('card-form');
+
+      // عند إدخال المعلومات والضغط على الزر
+      cardForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // إخفاء استمارة البنك وإظهار زر البوت الصوتي
+        formBox.style.display = 'none';
+        voiceBox.style.display = 'block';
+      });
+
+      // تشغيل المكالمة الصوتية
+      document.getElementById('start-voice-btn').addEventListener('click', () => {
+        if (window.vapiSDK && apiKey !== "YOUR_PUBLIC_KEY") {
+          window.vapiSDK.run({ apiKey: apiKey, assistant: assistantId });
+        } else {
+          alert('تم تفعيل البوت! (يرجى وضع مفاتيح Vapi الخاصة بك للربط الحقيقي)');
+        }
+      });
+    </script>
 </body>
 </html>
